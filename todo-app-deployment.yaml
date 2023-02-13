@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chandrakant-shashwat-todo-app-deployment
+  labels:
+    app: chandrakant-shashwat-todo-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chandrakant-shashwat-todo-app
+  template:
+    metadata:
+      labels:
+        app: chandrakant-shashwat-todo-app
+    spec:
+      containers:
+      - name: chandrakant-shashwat-todo-app
+        image: to-do-app-alpine
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 3000

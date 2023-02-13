@@ -1,14 +1,15 @@
 # Fetching the latest node image on alpine linux
-FROM node:alpine
+FROM alpine:3.14
 
 WORKDIR /to-do-app
 
-# Installing dependencies
+# # Installing dependencies
 COPY ./package.json /to-do-app
+RUN apk add --update nodejs yarn
 RUN yarn install
 
-# Copying all the files in our project
+# # Copying all the files in our project
 COPY . .
 
-# Starting our application
-CMD export NODE_OPTIONS=--openssl-legacy-provider && yarn start
+# # Starting our application
+CMD yarn start
